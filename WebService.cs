@@ -1,10 +1,23 @@
-[WebMethod]
-public string converttodate(string day)
+using System;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.Services;
+///<summary>
+/// Summary description for UtilityWebService
+///</summary>
+[WebService(Namespace = "http://tempuri.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line.
+// [System.Web.Script.Services.ScriptService]
+public class WebService: System.Web.Services.WebService
 {
-DateTime dt= new DateTime(day);
-string day= DateTime.UtNow().Add(3);
+    public WebService()
+    {
+        //Uncomment the following line if using designed components
+        //InitializeComponent();
+    }
+[WebMethod]
 
-}
 //Assumption: if Jan 1 is friday June 25 is friday
 //Designated first sunday is Jan (3) if the service is called then June 25
 //given “Monday” and called at midnight on 25 June, it should return 29 June 2020 as a string, in whatever format you choose
@@ -23,7 +36,7 @@ public static int GetWeekOfYear(DateTime time)
     // Return the week of our adjusted day
     return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
 }
--------------------below is the code which I found from stackoverflow-------------------------------------------------------------------------
+--------------------------------------------------------------------------------Another code-----------------------------------------------------------------------------------------
 using static System.Globalization.GregorianCalendar;
 
 namespace System.Globalization
